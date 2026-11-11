@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>HERE — press once a day</title>
+  <meta name="description"
+    content="A red key you press once a day to say you're still here. One press a day. $HERE is a meme coin and a joke with a button. Not financial advice.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=block" rel="stylesheet">
+
+  <style>
+    /* Layout: ink-outlined bento for the things you operate (hero, console, audit,
+   inspector); everything you only read sits directly on the paper. Red is the
+   one colour the page owns. Green means done, amber means running. */
+    :root {
+      color-scheme: light;
+      --paper: #f3efe6;
+      --surface: #fffdf8;
+      --tint: #e8e2d4;
+      --ink: #161513;
+      --muted: #5f5a51;
+      --red: #e2372a;
+      --red-soft: #fbd9d2;
+      --green: #84cc5f;
+      --amber: #f2b632;
+      --shadow-c: #161513;
+      --key-edge: #161513;
+      --console-bg: #161513;
+      --console-fg: #ece7dc;
+      --console-dim: #8a857a;
+      --console-line: #2f2d29;
+
+      --border: 3px solid var(--ink);
+      --shadow: 7px 7px 0 var(--shadow-c);
+      --shadow-sm: 4px 4px 0 var(--shadow-c);
+      --shadow-xs: 3px 3px 0 var(--shadow-c);
+
+      --display: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+      --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+      --gap-section: 104px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--body);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    .shell {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+      padding-block: 22px 40px;
+    }
+
+    .bento {
+      border: var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
+      font-variation-settings: "opsz" 96;
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+      font-variation-settings: "opsz" 48;
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .mono {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      margin-top: var(--gap-section);
+    }
+
+    /* ── Top bar ───────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 14px 10px 18px;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.04em;
+    }
+
+    .topnav {
+      display: flex;
+      gap: 26px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 150ms ease;
+    }
+
+    .topnav a:hover {
+      color: var(--ink);
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sound-toggle {
+      display: inline-flex;
+      align-items: center;
+      border: 0;
+      background: none;
+      padding: 4px;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--muted);
+    }
+
+    .sound-toggle:hover {
+      color: var(--ink);
+    }
+
+    .sound-toggle .mi {
+      display: none;
+      font-size: 22px;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(32px, 5.5vw, 72px);
+      min-width: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8.4vw, 7.4rem);
+      line-height: 0.86;
+      letter-spacing: -0.055em;
+      font-weight: 800;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--red);
+    }
+
+    .hero-desc {
+      max-width: 54ch;
+      margin: 28px 0 0;
+      font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    .hero-note {
+      margin: 18px 0 0;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-dial {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 34px 24px 60px;
+      min-width: 0;
+      overflow: hidden;
+      border-left: var(--border);
+      background-color: var(--tint);
+      background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 16%, transparent) 1.2px, transparent 1.6px);
+      background-size: 18px 18px;
+    }
+
+    .hero-dial p {
+      position: absolute;
+      right: 18px;
+      bottom: 20px;
+      left: 18px;
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-dial p b {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* The deck: an isometric control panel built from flat faces.
+   Camera = rotateX(54.7deg) rotateZ(45deg), no perspective, so it reads as
+   true isometric. Only the two faces the camera can see (south, east) are drawn. */
+    @property --kh {
+      syntax: "<length>";
+      inherits: true;
+      initial-value: 16px;
+    }
+
+    .deck-wrap {
+      display: grid;
+      place-items: center;
+      width: 100%;
+    }
+
+    .deck-wrap.kick {
+      animation: kick 380ms cubic-bezier(.3, .7, .4, 1);
+    }
+
+    .deck {
+      --S: min(290px, 62vw);
+      --rx: 54.7deg;
+      --rz: 45deg;
+      --slab: 22px;
+      position: relative;
+      width: var(--S);
+      height: var(--S);
+      max-width: 100%;
+      margin-top: calc(var(--S) * -0.04);
+      transform-style: preserve-3d;
+      transform: rotateX(var(--rx)) rotateZ(var(--rz));
+      transition: transform 700ms cubic-bezier(.2, .75, .2, 1);
+    }
+
+    .deck.intro {
+      --rx: 70deg;
+      --rz: 15deg;
+      transition: none;
+    }
+
+    .deck * {
+      transform-style: preserve-3d;
+    }
+
+    .slab-top,
+    .slab-s,
+    .slab-e {
+      position: absolute;
+      box-sizing: border-box;
+    }
+
+    .slab-top {
+      inset: 0;
+      background: #24221f;
+      border: 2px solid #161513;
+    }
+
+    .slab-s {
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: var(--slab);
+      transform-origin: top;
+      transform: rotateX(-90deg);
+      background: #161513;
+    }
+
+    .slab-e {
+      left: 100%;
+      top: 0;
+      width: var(--slab);
+      height: 100%;
+      transform-origin: left;
+      transform: rotateY(90deg);
+      background: #0c0b0a;
+    }
+
+    .slab-top::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px dashed rgba(236, 231, 220, 0.16);
+    }
+
+    .plate {
+      position: absolute;
+      inset: calc(var(--S) * 0.075);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: calc(var(--S) * 0.05);
+      transform: translateZ(1px);
+    }
+
+    .k {
+      position: relative;
+      cursor: pointer;
+      border-radius: 4px;
+      --kh: 15px;
+      --top: var(--surface);
+      transition: --kh 110ms ease-out;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .k.big {
+      --kh: 30px;
+      --top: var(--red);
+    }
+
+    .k.big.stop {
+      --top: #4a4f57;
+    }
+
+    .k.run {
+      --top: var(--amber);
+    }
+
+    .k.done {
+      --top: var(--green);
+    }
+
+    @media (hover: hover) {
+      .k:hover {
+        --kh: 18px;
+      }
+
+      .k.big:hover {
+        --kh: 33px;
+      }
+    }
+
+    .k.down,
+    .k.down:hover {
+      --kh: 5px;
+    }
+
+    .k.big.down,
+    .k.big.down:hover {
+      --kh: 12px;
+    }
+
+    .k-top,
+    .k-s,
+    .k-e {
+      position: absolute;
+      box-sizing: border-box;
+      border: 2px solid #161513;
+      transition: background-color 220ms ease;
+    }
+
+    .k-top {
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      transform: translateZ(var(--kh));
+      background-color: var(--top);
+      background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0) 55%);
+    }
+
+    .k-s {
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: var(--kh);
+      transform-origin: top;
+      transform: rotateX(90deg);
+      background-color: color-mix(in srgb, var(--top) 80%, #000);
+    }
+
+    .k-e {
+      left: 100%;
+      top: 0;
+      width: var(--kh);
+      height: 100%;
+      transform-origin: left;
+      transform: rotateY(-90deg);
+      background-color: color-mix(in srgb, var(--top) 64%, #000);
+    }
+
+    .mi {
+      font-family: "Material Icons";
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      white-space: nowrap;
+      direction: ltr;
+      font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .k-top .mi {
+      transform: rotate(-45deg);
+      font-size: calc(var(--S) * 0.095);
+      color: #161513;
+      pointer-events: none;
+    }
+
+    .k.big .k-top .mi {
+      font-size: calc(var(--S) * 0.13);
+      color: #fff;
+    }
+
+    .k:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    /* A ritual ticked today: a green dot on its deck key. */
+    .k.ticked .k-top::after {
+      content: "";
+      position: absolute;
+      top: 9%;
+      right: 9%;
+      width: 16%;
+      aspect-ratio: 1;
+      border: 2px solid #161513;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    @keyframes kick {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      20% {
+        transform: translate(-4px, 2px) rotate(-1deg);
+      }
+
+      45% {
+        transform: translate(4px, -1px) rotate(1deg);
+      }
+
+      70% {
+        transform: translate(-2px, 0);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    /* ── Console ───────────────────────────────────────────────── */
+    .console {
+      margin-top: 26px;
+      padding: 22px 24px 20px;
+      background: var(--console-bg);
+      color: var(--console-fg);
+      border-color: var(--console-bg);
+    }
+
+    .console-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--console-line);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--console-dim);
+    }
+
+    .console-head .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--console-fg);
+    }
+
+    .console-head .live i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .console-head .live.busy i {
+      background: var(--amber);
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    .console-head .spacer {
+      margin-left: auto;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.35;
+      }
+    }
+
+    .steps {
+      display: grid;
+      gap: 2px;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 10px 6px;
+      border-radius: 10px;
+      color: var(--console-dim);
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    .step .tick {
+      width: 14px;
+      height: 14px;
+      margin-top: 2px;
+      border: 2px solid var(--console-line);
+      border-radius: 50%;
+    }
+
+    .step .body {
+      min-width: 0;
+    }
+
+    .step .txt {
+      display: block;
+    }
+
+    .step .cmd {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.74rem;
+      color: var(--console-dim);
+      opacity: 0.55;
+      overflow-wrap: anywhere;
+    }
+
+    .step .cmd::before {
+      content: "↳ ";
+    }
+
+    .step .meta {
+      text-align: right;
+      font-size: 0.72rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .step .meta b {
+      display: block;
+      font-weight: 400;
+      color: var(--console-fg);
+    }
+
+    .step.run {
+      background: rgba(242, 182, 50, 0.08);
+      color: var(--console-fg);
+    }
+
+    .step.run .tick {
+      border-color: var(--amber);
+      border-right-color: transparent;
+      animation: spin 0.7s linear infinite;
+    }
+
+    .step.run .cmd,
+    .step.done .cmd {
+      opacity: 1;
+    }
+
+    .step.done {
+      color: var(--console-fg);
+    }
+
+    .step.done .tick {
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    .prompt {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 12px 6px 2px;
+      border-top: 1px solid var(--console-line);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .prompt .ps {
+      color: var(--green);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: var(--console-fg);
+      animation: blink 1.05s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ── Stats (on paper, no frames) ───────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: var(--border);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 26px 24px 4px 0;
+      min-width: 0;
+    }
+
+    .stat+.stat {
+      padding-left: 24px;
+      border-left: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+    }
+
+    .stat .mono {
+      color: var(--muted);
+    }
+
+    .stat strong {
+      margin-top: 18px;
+      font-family: var(--display);
+      font-size: clamp(3.2rem, 5.6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+      font-variant-numeric: tabular-nums;
+      font-variation-settings: "opsz" 96;
+    }
+
+    .stat strong small {
+      font-size: 0.4em;
+      letter-spacing: -0.02em;
+      margin-left: 4px;
+    }
+
+    .stat:first-child strong {
+      color: var(--red);
+    }
+
+    .stat span {
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .reminder {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 16px;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+    }
+
+    .reminder label {
+      color: var(--muted);
+    }
+
+    .reminder input {
+      height: 44px;
+      padding: 0 12px;
+      border: var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      font: 500 1rem var(--mono);
+    }
+
+    .reminder-note {
+      flex-basis: 100%;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .ritual-count {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .ritual-state {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .rb-open {
+      display: grid;
+      gap: 10px;
+      justify-items: start;
+      align-content: start;
+      width: 100%;
+      min-height: 220px;
+      padding: 22px 22px 78px;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .rb-open:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: -6px;
+      border-radius: 16px;
+    }
+
+    /* Each card's own "mark done" button. It pulses until the ritual is done. */
+    .rb-mark {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 38px;
+      padding: 0 16px 0 11px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      font: 500 0.7rem var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 55%, transparent);
+      animation: rb-pulse 1.8s ease-out infinite;
+    }
+
+    .rb-mark .mi {
+      font-size: 18px;
+      color: var(--red);
+    }
+
+    .rb-mark:hover {
+      background: var(--red-soft);
+    }
+
+    .rb-mark:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    .rb-mark.done {
+      background: var(--green);
+      animation: none;
+    }
+
+    .rb-mark.done .mi {
+      color: var(--ink);
+    }
+
+    @keyframes rb-pulse {
+      0% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 55%, transparent);
+      }
+
+      70% {
+        box-shadow: 0 0 0 12px color-mix(in srgb, var(--red) 0%, transparent);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--red) 0%, transparent);
+      }
+    }
+
+    .stats-source {
+      margin: 22px 0 0;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Audit ─────────────────────────────────────────────────── */
+    .audit {
+      padding: clamp(26px, 4.4vw, 52px);
+    }
+
+    .audit-head,
+    .audit-result,
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .grade {
+      display: grid;
+      flex: 0 0 auto;
+      width: 96px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: var(--border);
+      border-radius: 50%;
+      background: var(--tint);
+      box-shadow: var(--shadow-sm);
+      font-family: var(--display);
+      font-size: 2.3rem;
+      font-weight: 800;
+      transition: background 300ms ease;
+    }
+
+    .grade.ok {
+      background: var(--green);
+      color: #161513;
+    }
+
+    .meter {
+      height: 30px;
+      margin-top: 32px;
+      overflow: hidden;
+      border: var(--border);
+      border-radius: 999px;
+      background: repeating-linear-gradient(-45deg, var(--paper) 0 10px, var(--surface) 10px 20px);
+    }
+
+    .meter span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--ink);
+      transition: width 120ms linear;
+    }
+
+    .audit-result {
+      margin-top: 18px;
+      align-items: flex-end;
+    }
+
+    .audit-result p {
+      max-width: 70ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .audit-result b {
+      flex: 0 0 auto;
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .audit-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Registry ──────────────────────────────────────────────── */
+    .section-head {
+      align-items: flex-end;
+      margin-bottom: 26px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .filter {
+      padding: 9px 15px;
+      border: var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--shadow-xs);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease, color 140ms ease;
+    }
+
+    .filter:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--shadow-c);
+    }
+
+    .filter:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 var(--shadow-c);
+    }
+
+    .filter.active {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.8fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .rb {
+      position: relative;
+      display: grid;
+      min-height: 220px;
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      border: var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 200ms ease;
+    }
+
+    .rb::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -28px;
+      width: 88px;
+      height: 88px;
+      border: var(--border);
+      border-radius: 50%;
+      background: var(--red);
+      transform: scale(0);
+      transition: transform 260ms cubic-bezier(.3, 1.4, .5, 1);
+    }
+
+    .rb:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--shadow-c);
+    }
+
+    .rb:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0 var(--shadow-c);
+    }
+
+    .rb.selected {
+      background: var(--red-soft);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--shadow-c);
+    }
+
+    .rb.selected::after {
+      transform: scale(1);
+    }
+
+    .rb-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      color: var(--muted);
+    }
+
+    .rb h3 {
+      max-width: 86%;
+      margin-top: 22px;
+    }
+
+    .rb p {
+      max-width: 84%;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .inspector {
+      position: sticky;
+      top: calc(18px + env(safe-area-inset-top, 0px));
+      min-width: 0;
+      padding: 26px;
+      background: var(--console-bg);
+      color: var(--console-fg);
+      --key-edge: var(--console-fg);
+    }
+
+    .inspector-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .badge {
+      padding: 7px 11px;
+      border: 1.5px solid var(--console-fg);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .inspector .mono {
+      color: var(--console-dim);
+    }
+
+    .detail-cat {
+      margin: 32px 0 8px;
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .inspector h3 {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      letter-spacing: -0.04em;
+    }
+
+    .detail {
+      margin-top: 24px;
+    }
+
+    .detail span {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--console-dim);
+    }
+
+    .detail p {
+      margin: 6px 0 0;
+      color: var(--console-fg);
+      opacity: 0.86;
+    }
+
+    .recommend {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 26px;
+      padding: 16px;
+      border: 1.5px solid var(--console-line);
+      border-radius: 16px;
+    }
+
+    .recommend>div>span {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--console-dim);
+    }
+
+    .recommend strong {
+      display: block;
+      margin-top: 6px;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .inspector-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+      align-items: center;
+    }
+
+    .text-button {
+      padding: 2px 4px;
+      border: 0;
+      background: none;
+      color: var(--console-fg);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+
+    .inspector :focus-visible {
+      outline-color: var(--console-fg);
+    }
+
+    /* ── Proof (on paper) ──────────────────────────────────────── */
+    .proof {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 56px;
+      padding-top: 34px;
+      border-top: var(--border);
+    }
+
+    .wordmarks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 26px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wordmarks li {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--muted);
+      font-variation-settings: "opsz" 36;
+    }
+
+    .trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .trust li {
+      padding: 7px 12px;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .quote {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .quote blockquote {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+      font-variation-settings: "opsz" 72;
+    }
+
+    .quote blockquote::before {
+      content: "“";
+      display: block;
+      height: 0.55em;
+      color: var(--red);
+      font-size: 2.4em;
+      line-height: 0.9;
+    }
+
+    .quote figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 14px;
+      margin-top: 20px;
+      color: var(--muted);
+    }
+
+    .quote figcaption b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .quote.empty blockquote {
+      font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+      color: var(--muted);
+    }
+
+    .quote.empty blockquote::before {
+      display: none;
+    }
+
+    .quote figcaption [role="button"] {
+      margin-left: auto;
+    }
+
+    .tag {
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--tint);
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Key system spec ───────────────────────────────────────── */
+    .spec {
+      padding: clamp(26px, 4.4vw, 52px);
+    }
+
+    .spec-lede {
+      max-width: 64ch;
+      margin: 16px 0 0;
+      color: var(--muted);
+    }
+
+    .spec-row {
+      margin-top: 28px;
+    }
+
+    .spec-title {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .spec-keys {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    /* ── Playbook (on paper) ───────────────────────────────────── */
+    .remedies {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px;
+    }
+
+    .remedy {
+      padding-top: 22px;
+      border-top: var(--border);
+      min-width: 0;
+    }
+
+    .remedy-n {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      color: var(--red);
+    }
+
+    .remedy .eyebrow {
+      margin-top: 8px;
+    }
+
+    .remedy h3 {
+      margin: 22px 0 14px;
+    }
+
+    .remedy p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 42ch;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    .footer {
+      margin-top: var(--gap-section);
+      padding: clamp(28px, 4.4vw, 52px);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.6fr));
+      gap: 32px;
+    }
+
+    .footer h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .footer h2 span {
+      color: var(--red);
+    }
+
+    .footer nav p {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer nav a {
+      display: block;
+      padding: 4px 0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer nav a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .footer-base {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Toast ─────────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border: var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .toast::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Base ──────────────────────────────────────────────────
+   .rb and others set display, which beats the browser's own [hidden] rule.
+   The filters and every CONFIG-hidden row depend on this one. */
+    [hidden] {
+      display: none !important;
+    }
+
+    :root {
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    /* The labelled keys redraw their insides on hover. A press that starts on a node
+   in there can lose its target between pointerenter and pointerdown, which leaves
+   those keys dead on touch screens, Safari and Firefox. Holding the hit target on
+   the key's own outer element fixes that. */
+    [role="button"]>svg {
+      pointer-events: none;
+    }
+
+    .key-face {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Instrument Sans", system-ui, sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .key-face .mi {
+      font-weight: 400;
+    }
+
+    /* ── Streak controls ───────────────────────────────────────── */
+    /* A key's box runs below its cap to hold the extrusion, so text next to a key
+   centres low. The bottom margin lifts it level with the label on the cap. */
+    .audit-text {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 18px;
+      margin-bottom: 14px;
+      padding-left: 4px;
+    }
+
+    .inspector-actions .text-button {
+      margin-bottom: 13px;
+    }
+
+    .audit .text-button {
+      color: var(--ink);
+    }
+
+    .day-banner {
+      margin: 0 0 26px;
+      padding: 12px 16px;
+      border: var(--border);
+      border-radius: 14px;
+      background: var(--red-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Wallet ────────────────────────────────────────────────── */
+    .topbar {
+      position: relative;
+    }
+
+    .wallet-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 14px;
+      z-index: 30;
+      width: min(340px, calc(100vw - 60px));
+      padding: 18px;
+      border: var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .wallet-menu .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .wallet-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      margin-top: 8px;
+      padding: 11px 13px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 600;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+
+    .wallet-row:hover {
+      background: var(--tint);
+    }
+
+    .wallet-row small {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .wallet-address {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .wallet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 12px;
+    }
+
+    .wallet-menu .text-button {
+      color: var(--ink);
+    }
+
+    .wallet-note {
+      margin: 14px 0 0;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    /* ── Claim ─────────────────────────────────────────────────── */
+    .claim {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 26px;
+      padding: 18px 24px;
+    }
+
+    .claim .eyebrow {
+      margin-bottom: 6px;
+    }
+
+    .claim-status {
+      margin: 0;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .claim-status a {
+      color: var(--red);
+      text-underline-offset: 3px;
+    }
+
+    .claim-tiers {
+      margin: 4px 0 0;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .claim-terms {
+      max-width: 78ch;
+      margin: 30px 0 0;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* ── Links ─────────────────────────────────────────────────── */
+    .wordmarks a {
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .wordmarks a:hover {
+      color: var(--ink);
+    }
+
+    .wordmarks .contract {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px 12px;
+      width: 100%;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .wordmarks .contract .text-button {
+      color: var(--ink);
+    }
+
+    .wordmarks .links-empty {
+      font-family: var(--body);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    /* No icon font (offline, blocked): ligature names would print as raw words. */
+    .no-icons .mi {
+      visibility: hidden;
+    }
+
+    .no-icons .key-face .mi {
+      display: none;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 1050px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-dial {
+        min-height: 380px;
+        border-left: 0;
+        border-top: var(--border);
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat:nth-child(3) {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .workspace,
+      .proof {
+        grid-template-columns: 1fr;
+      }
+
+      .proof {
+        gap: 40px;
+      }
+
+      .inspector {
+        position: relative;
+        top: auto;
+      }
+
+      .topnav {
+        display: none;
+      }
+
+      .footer-top {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer-top>div:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --gap-section: 72px;
+      }
+
+      .bento {
+        border-radius: 18px;
+        box-shadow: 5px 5px 0 var(--shadow-c);
+      }
+
+      .hero-copy {
+        padding: 32px 22px 38px;
+      }
+
+      .cards,
+      .remedies {
+        grid-template-columns: 1fr;
+      }
+
+      .remedies {
+        gap: 30px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat,
+      .stat+.stat {
+        padding: 22px 0 18px;
+        border-left: 0;
+      }
+
+      .stat+.stat {
+        border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+      }
+
+      .audit-head,
+      .audit-result,
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+
+      .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .step {
+        grid-template-columns: 18px minmax(0, 1fr);
+      }
+
+      .step .meta {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .step .meta b {
+        display: inline;
+        margin-right: 8px;
+      }
+
+      .toast {
+        right: 12px;
+        left: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        justify-content: center;
+      }
+    }
+
+    /* Phones: the bar keeps its controls on one line. Sound becomes its speaker
+   icon and Chart drops to an icon-only key (script swaps it), and the keys
+   that carry a label go full width so none runs past its card. */
+    @media (max-width: 560px) {
+      .topbar {
+        gap: 10px;
+        padding: 8px 10px 8px 12px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .top-right {
+        gap: 6px;
+      }
+
+      .sound-toggle .mi {
+        display: inline;
+      }
+
+      .sound-toggle .sound-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      .hero-actions,
+      .audit-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .hero-actions>span,
+      .audit-actions>span {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    /* A key's box has a margin around its cap, so keys sat a few pixels in from the
+   text above them. These pull the caps back onto the text column. */
+    .hero-actions {
+      margin-left: -5px;
+    }
+
+    .audit-actions,
+    .inspector-actions {
+      margin-left: -4px;
+    }
+
+    @media (max-width: 760px) {
+      .claim {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-actions {
+        width: calc(100% + 15px);
+      }
+
+      .audit-actions {
+        width: calc(100% + 13px);
+      }
+
+      #claimKey {
+        display: block;
+        margin-left: -4px;
+        width: calc(100% + 13px);
+      }
+    }
+
+    /* Chart and the wallet key together leave no room for the wordmark on the
+   narrowest phones. The key beside it still carries the brand. */
+    @media (max-width: 380px) {
+      .topbar.crowded .brand-word {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+      }
+
+      .cursor,
+      .rb-mark {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="shell" id="top">
+
+    <p class="day-banner" id="dayBanner" hidden></p>
+
+    <div class="bento topbar" data-section="nav">
+      <span class="brand"><span id="brandKey"></span><span class="brand-word">HERE</span></span>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#registry">Rituals</a>
+        <a href="#audit">Check</a>
+        <a href="#playbook">How it works</a>
+      </nav>
+      <div class="top-right">
+        <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true"><span class="mi" id="soundIcon"
+            aria-hidden="true">volume_up</span><span class="sound-label" id="soundLabel">Sound on</span></button>
+        <span id="navCta"></span>
+        <span id="xCta"></span>
+        <span id="walletCta"></span>
+      </div>
+      <div class="wallet-menu" id="walletMenu" hidden></div>
+    </div>
+
+    <!-- HERO -->
+    <header class="bento hero" data-section="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Daily check-in · for the ones still here</p>
+        <h1>Press once.<span>Still here.</span></h1>
+        <p class="hero-desc" id="heroDesc">One red key. Connect your wallet and it's your account.
+          Press it once a day, no transaction. Miss a day and it starts again.</p>
+        <div class="hero-actions">
+          <span id="heroPrimary"></span>
+          <span id="heroGhost"></span>
+        </div>
+        <p class="hero-note" id="heroNote">Press the red key. Once a day.</p>
+      </div>
+      <div class="hero-dial" id="deckStage">
+        <div class="deck-wrap" id="deckWrap">
+          <div class="deck intro" id="deck">
+            <div class="slab-s"></div>
+            <div class="slab-e"></div>
+            <div class="slab-top"></div>
+            <div class="plate" id="plate"></div>
+          </div>
+        </div>
+        <p id="dialLabel"><b>Red key</b> · say you're still here</p>
+      </div>
+    </header>
+
+    <!-- CONSOLE -->
+    <section class="bento console" aria-label="Run log" data-section="run-log">
+      <div class="console-head">
+        <span class="live" id="liveDot"><i></i><span id="liveText">Ready</span></span>
+        <span>run log</span>
+        <span class="spacer" id="consoleStatus">idle — press the key</span>
+      </div>
+      <div class="steps" id="steps"></div>
+      <div class="prompt"><span class="ps">›</span><span id="promptText">press the red key to run</span><span
+          class="cursor" aria-hidden="true"></span></div>
+    </section>
+
+    <!-- CLAIM -->
+    <section class="bento claim" id="claim" aria-label="Claim" data-section="claim" hidden>
+      <div>
+        <p class="eyebrow">Today's check-in</p>
+        <p class="claim-status" id="claimStatus" aria-live="polite"></p>
+        <p class="claim-tiers" id="claimTiers"></p>
+      </div>
+      <span id="claimKey"></span>
+    </section>
+
+    <!-- STATS -->
+    <section class="section" aria-label="Your streak" data-section="stats">
+      <div class="stats">
+        <article class="stat">
+          <p class="mono">Current streak</p>
+          <strong id="statCurrent">—</strong>
+          <span>days in a row</span>
+        </article>
+        <article class="stat">
+          <p class="mono">Longest streak</p>
+          <strong id="statLongest">—</strong>
+          <span>your best</span>
+        </article>
+        <article class="stat">
+          <p class="mono">Days pressed</p>
+          <strong id="statTotal">—</strong>
+          <span>since you started</span>
+        </article>
+        <article class="stat">
+          <p class="mono">Last press</p>
+          <strong id="statLast">—</strong>
+          <span>your time</span>
+        </article>
+      </div>
+      <p class="stats-source">Clear your browser and it's gone · export to keep it</p>
+      <div class="reminder">
+        <label class="mono" for="reminderTime">Daily reminder at</label>
+        <input id="reminderTime" type="time" value="09:00">
+        <span id="reminderKey"></span>
+        <p class="reminder-note">Saves a calendar file with a daily event at that time. Nothing is sent.</p>
+      </div>
+    </section>
+
+    <!-- AUDIT -->
+    <section class="bento audit section" id="audit" data-section="audit">
+      <div class="audit-head">
+        <div>
+          <p class="eyebrow">Check</p>
+          <h2>Are you still here?</h2>
+        </div>
+        <strong class="grade" id="grade">?</strong>
+      </div>
+      <div class="meter" id="meter" role="progressbar" aria-label="Progress to the next milestone" aria-valuemin="0"
+        aria-valuemax="100" aria-valuenow="0"><span id="meterFill"></span></div>
+      <div class="audit-result">
+        <p id="auditStatus">Not checked yet. Press the key, then run the check. It reads your own streak, nothing else.
+        </p>
+        <b id="auditPercent">0%</b>
+      </div>
+      <div class="audit-actions">
+        <span id="auditBtn"></span>
+        <span id="auditExport"></span>
+        <div class="audit-text">
+          <button class="text-button" id="exportBtn" type="button">Export streak</button>
+          <button class="text-button" id="importBtn" type="button">Import</button>
+          <button class="text-button" id="signBtn" type="button" hidden>Sign proof</button>
+          <input id="importFile" type="file" accept=".json,application/json" hidden>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTRY -->
+    <section class="section" id="registry" data-section="registry">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Rituals</p>
+          <h2>Eight small ways to stay</h2>
+          <p class="mono ritual-count" id="ritualCount">0 of 8 done today</p>
+        </div>
+        <div class="filters" id="filters">
+          <button class="filter active" type="button" data-filter="all">All</button>
+          <button class="filter" type="button" data-filter="recovery">Body</button>
+          <button class="filter" type="button" data-filter="deploy">Mind</button>
+          <button class="filter" type="button" data-filter="security">People</button>
+        </div>
+      </div>
+      <div class="workspace" data-component="registry-inspector">
+        <div class="cards" id="cards"></div>
+        <aside class="bento inspector" aria-live="polite">
+          <div class="inspector-top">
+            <span class="badge" id="detailScope"></span>
+            <span class="mono" id="detailNumber"></span>
+          </div>
+          <p class="detail-cat" id="detailCat"></p>
+          <h3 id="detailTitle"></h3>
+          <div class="detail"><span>What it does</span>
+            <p id="detailWhat"></p>
+          </div>
+          <div class="detail"><span>What it won't do</span>
+            <p id="detailWont"></p>
+          </div>
+          <div class="recommend">
+            <div><span>Takes</span><strong id="detailApproval"></strong></div>
+            <span id="detailKey"></span>
+          </div>
+          <p class="ritual-state" id="ritualState"></p>
+          <div class="inspector-actions">
+            <span id="nextKeyBtn"></span>
+            <button class="text-button" id="copyBtn" type="button">Copy ritual</button>
+          </div>
+        </aside>
+      </div>
+      <p class="stats-source">Suggestions, not health advice · ticks reset each day</p>
+    </section>
+
+    <!-- PROOF -->
+    <section class="section proof" aria-label="Where to find it" data-section="proof">
+      <div>
+        <p class="eyebrow">Where to find it</p>
+        <ul class="wordmarks" id="links"></ul>
+        <ul class="trust">
+          <li>Wallet is your account</li>
+          <li id="trustTx">No transactions</li>
+          <li id="trustLocal">One press a day</li>
+          <li>Export your streak</li>
+        </ul>
+      </div>
+      <figure class="quote empty" id="yourDay">
+        <blockquote id="dayLine">Press the key and your day shows up here.</blockquote>
+        <figcaption><span id="dayCaption">Just you</span><span id="shareDay"></span></figcaption>
+      </figure>
+    </section>
+
+    <!-- PLAYBOOK -->
+    <section class="section" id="playbook" data-section="playbook">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2>Three moves, in order</h2>
+        </div>
+      </div>
+      <div class="remedies">
+        <article class="remedy">
+          <span class="remedy-n">01</span>
+          <p class="eyebrow">Press</p>
+          <h3>One key, once a day.</h3>
+          <p id="movePress">Press it. The log runs, the day is written, the streak goes up by one.</p>
+        </article>
+        <article class="remedy">
+          <span class="remedy-n">02</span>
+          <p class="eyebrow">Keep</p>
+          <h3>The streak is yours.</h3>
+          <p>It sits in your browser. Export it to keep it, import it to move it. No one else can see it.</p>
+        </article>
+        <article class="remedy">
+          <span class="remedy-n">03</span>
+          <p class="eyebrow">Return</p>
+          <h3>Miss a day and it starts over. No shame.</h3>
+          <p>The key is still red. Press it tomorrow and begin again at one.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="bento footer" data-section="footer">
+      <div class="footer-top">
+        <div>
+          <p class="eyebrow">HERE</p>
+          <h2>Press the key.<br><span>Say you're here.</span></h2>
+        </div>
+        <nav aria-label="Page">
+          <p>Page</p><a href="#registry">Rituals</a><a href="#audit">Check</a>
+        </nav>
+        <nav aria-label="Learn">
+          <p>Learn</p><a href="#playbook">How it works</a><a href="#top">Press the key</a>
+        </nav>
+        <nav aria-label="Community" id="footerCommunity" hidden>
+          <p>Community</p>
+        </nav>
+      </div>
+      <p class="claim-terms" id="claimTerms" hidden></p>
+      <div class="footer-base">
+        <span>$HERE · © <span id="year">2026</span></span>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./streak.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      /* Empty values hide their button, link, row and footer entry. */
+      const CONFIG = {
+        NAME: "STILL HERE",
+        TICKER: "$HERE",
+        CA: "",          // contract address, empty = hidden
+        X_URL: "https://x.com/here_tracker",       // official X, empty = hidden
+        TG_URL: "",
+        CHART_URL: "",
+        REPO_URL: "",
+        SOLANA_SLOT: false,        // stamp each press with the current slot
+        SOLANA_RPC: "https://api.mainnet-beta.solana.com",   // must allow browser requests, see README
+        SIGNATURE: false,          // message-only wallet signature
+        WALLETS: true,             // Phantom and Solflare connect key
+        CLAIM_URL: ""              // payout service, empty = no claim and no mention of it
+      };
+
+      /* ── Key system ─────────────────────────────────────────────
+         S() walks a superellipse (|cos|^0.6) so the corner never flattens.
+         createBtn stacks it into a base, side slices and a face that travels
+         on press. No drop shadow: depth is the extrusion. The face carries a
+         soft top highlight; the outline reads --key-edge from the page. */
+      var HEXES = ("3b82f61d4ed822c55e15803def4444b91c1cff6a00cc5500ffc800cca00014b8a6" +
+        "0f766edb3b7cb02e649356d46b3fa13341551e293bffbf00cc9900ffffffd3e2ef").match(/.{6}/g);
+      var COLORS = { blue: 0, green: 1, red: 2, orange: 3, yellow: 4, teal: 5, pink: 6, purple: 7, slate: 8, amber: 9, white: 10 };
+      var INK = "#161513";
+      var CTX = document.createElement("canvas").getContext("2d");
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ── Press sound: a short low thunk, synthesized, quiet ───── */
+      var soundOn = true, AC = null;
+      function thunk(up) {
+        if (!soundOn) return;
+        try {
+          AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+          var t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+          o.type = "triangle";
+          o.frequency.setValueAtTime(up ? 320 : 210, t);
+          o.frequency.exponentialRampToValueAtTime(up ? 160 : 62, t + 0.05);
+          g.gain.setValueAtTime(0.0001, t);
+          g.gain.exponentialRampToValueAtTime(up ? 0.04 : 0.11, t + 0.004);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + 0.085);
+          o.connect(g); g.connect(AC.destination);
+          o.start(t); o.stop(t + 0.1);
+        } catch (e) { }
+      }
+      var soundBtn = document.getElementById("soundToggle");
+      soundBtn.addEventListener("click", function () {
+        soundOn = !soundOn;
+        document.getElementById("soundLabel").textContent = soundOn ? "Sound on" : "Sound off";
+        document.getElementById("soundIcon").textContent = soundOn ? "volume_up" : "volume_off";
+        soundBtn.setAttribute("aria-pressed", String(soundOn));
+      });
+
+      function S(w, h, r, x, y) {
+        var p = "";
+        for (var j = 0; j < 4; j++) {
+          for (var i = 0; i < 31; i++) {
+            var q = ((j + i / 30) * Math.PI) / 2, c = Math.cos(q), s = Math.sin(q);
+            p += (j || i ? "L" : "M") +
+              (x + (c > 0 ? w - r : r) + Math.sign(c) * Math.pow(Math.abs(c), 0.6) * r).toFixed(2) + " " +
+              (y + (s > 0 ? h - r : r) + Math.sign(s) * Math.pow(Math.abs(s), 0.6) * r).toFixed(2);
+          }
+        }
+        return p + "Z";
+      }
+
+      function createBtn(cfg) {
+        var el = document.createElement("div");
+        el.style.cursor = "pointer";
+        el.style.position = "relative";
+        el.style.verticalAlign = "middle";
+        el.style.userSelect = "none";
+        el.style.webkitTapHighlightColor = "transparent";
+        el.style.textTransform = "none";
+        el.style.borderRadius = "14px";
+        el.setAttribute("role", "button");
+        el.setAttribute("tabindex", "0");
+        el.setAttribute("aria-label", cfg.aria || cfg.l || cfg.i || "button");
+
+        var pressed = 0, hover = 0, w = 0;
+        var u = Math.random().toString(36).slice(2);
+
+        function render() {
+          var c = cfg.c || "blue", l = cfg.l || "", icon = cfg.i || "", h = cfg.h || 44, sq = !!cfg.sq;
+          var idx = COLORS[c] || 0, hb = HEXES[idx * 2], hd = HEXES[idx * 2 + 1], white = c === "white";
+          var mix = function (hex, pct, k) { return "color-mix(in srgb, #" + hex + " " + pct + "%, " + k + ")"; };
+          var scale = h / 40, label = cfg.raw ? l : l.toUpperCase();
+
+          if (!w) {
+            CTX.font = '700 15px "Instrument Sans", system-ui';
+            w = sq ? 48 : Math.ceil((CTX.measureText(label).width + (icon ? 96 : 76)) * 1.08);
+          }
+          var faceY = pressed ? 8 : (hover ? 3 : 4);
+          var baseY = 11;
+          var z = Math.min(0.5, 20 / w);
+
+          /* `full` can change after mount (see the phone switch below), so the
+             box is set on every render rather than once at creation */
+          el.style.display = cfg.full ? "block" : "inline-block";
+          el.style.width = cfg.full ? "100%" : (w + 14) * scale + "px";
+          el.style.height = 60 * scale + "px";
+
+          var slices = "";
+          for (var k = 0; k < Math.max(0, baseY - faceY); k++) {
+            slices += '<path d="' + S(w, 40, 18, 5, faceY + 1 + k) + '" fill="url(#g' + u + ')"/>';
+          }
+          var faceFill = white ? "#fffdf8" : "#" + hb;
+          var edge = 'style="stroke:var(--key-edge,' + INK + ')" stroke-width="' + (cfg.sw || 3) + '"';
+
+          el.innerHTML =
+            '<svg viewBox="0 0 ' + (w + 14) + ' 60" style="width:100%;height:100%;overflow:visible;display:block" preserveAspectRatio="none" aria-hidden="true">' +
+            "<defs>" +
+            '<linearGradient id="g' + u + '">' +
+            '<stop offset="0" stop-color="' + mix(hd, 62, "white") + '"/>' +
+            '<stop offset="' + z + '" stop-color="' + mix(hd, 88, "white") + '"/>' +
+            '<stop offset="' + (1 - z) + '" stop-color="' + mix(hd, 88, "white") + '"/>' +
+            '<stop offset="1" stop-color="' + mix(hd, 62, "white") + '"/>' +
+            "</linearGradient>" +
+            '<linearGradient id="h' + u + '" x1="0" y1="0" x2="0" y2="1">' +
+            '<stop offset="0" stop-color="#fff" stop-opacity="' + (white ? 0 : 0.34) + '"/>' +
+            '<stop offset="0.5" stop-color="#fff" stop-opacity="0"/>' +
+            '<stop offset="1" stop-color="#000" stop-opacity="' + (white ? 0.04 : 0.08) + '"/>' +
+            "</linearGradient>" +
+            "</defs>" +
+            '<path d="' + S(w, 40, 18, 5, baseY) + '" fill="' + mix(hd, 78, "black") + '" ' + edge + "/>" +
+            slices +
+            '<path d="' + S(w, 40, 18, 5, faceY) + '" fill="' + faceFill + '" ' + edge + "/>" +
+            '<path d="' + S(w - 6, 36, 16, 8, faceY + 2) + '" fill="url(#h' + u + ')"/>' +
+            "</svg>" +
+            /* Icon and label are HTML laid over the cap, not SVG text. WebKit sizes SVG
+               text by the letters of a ligature, so play_arrow came out 200px wide and
+               threw everything off the key. */
+            '<span class="key-face" aria-hidden="true" style="left:' + 5 * scale + "px;right:" + 9 * scale + "px;top:" + faceY * scale +
+            "px;height:" + 40 * scale + "px;gap:" + 8 * scale + "px;color:" + (white ? INK : "#fff") + '">' +
+            (icon ? '<span class="mi" style="font-size:' + (sq ? 26 : 20) * scale + 'px">' + icon + "</span>" : "") +
+            (!sq ? '<span class="key-label" style="font-size:' + 15 * scale + "px;letter-spacing:" + 0.6 * scale + 'px">' + label + "</span>" : "") +
+            "</span>";
+        }
+
+        function press(v) { if (v === pressed) return; pressed = v; if (v) thunk(false); render(); }
+
+        el.onpointerenter = function () { hover = 1; render(); };
+        el.onpointerdown = function () { press(1); };
+        el.onpointerup = function () { var was = pressed; press(0); if (was) { thunk(true); if (cfg.onPress) cfg.onPress(api); } };
+        el.onpointerleave = function () { hover = 0; pressed = 0; render(); };
+        el.onkeydown = function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (!e.repeat) press(1); } };
+        el.onkeyup = function (e) { if (e.key === "Enter" || e.key === " ") { press(0); thunk(true); if (cfg.onPress) cfg.onPress(api); } };
+
+        if ("ResizeObserver" in window) {
+          new ResizeObserver(function () {
+            if (!cfg.full) return;
+            var next = el.offsetWidth / ((cfg.h || 44) / 40) - 14;
+            if (next > 0 && Math.abs(next - w) > 1) { w = next; render(); }
+          }).observe(el);
+        }
+
+        var api = {
+          el: el,
+          set: function (next) { Object.keys(next).forEach(function (k) { cfg[k] = next[k]; }); if (!cfg.full) w = 0; render(); },
+          press: function () { press(1); setTimeout(function () { press(0); if (cfg.onPress) cfg.onPress(api); }, 120); }
+        };
+        render();
+        return api;
+      }
+
+      var mount = function (id, api) { var host = document.getElementById(id); if (host) host.appendChild(api.el); return api; };
+
+      /* re-render keys once the label font arrives so widths are measured right */
+      var allKeys = [];
+      var make = function (cfg) { var k = createBtn(cfg); allKeys.push(k); return k; };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { allKeys.forEach(function (k) { k.set({}); }); });
+
+      /* ── Page furniture ─────────────────────────────────────── */
+      function scrollToId(id, block) {
+        document.getElementById(id).scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: block });
+      }
+
+      mount("brandKey", make({ c: "red", i: "place", sq: true, h: 30, aria: "HERE" }));
+      var navCta = CONFIG.CHART_URL ? mount("navCta", make({
+        c: "white", l: "Chart", h: 36, i: "show_chart",
+        onPress: function () { window.open(CONFIG.CHART_URL, "_blank", "noopener"); }
+      })) : null;
+      var xKey = CONFIG.X_URL ? mount("xCta", make({
+        c: "white", l: "TWITTER", h: 36, i: "north_east", aria: "Open X",
+        onPress: function () { window.open(CONFIG.X_URL, "_blank", "noopener"); }
+      })) : null;
+      var heroGhost = mount("heroGhost", make({
+        c: "white", l: "How it works", h: 52, i: "help", sw: 2.3,
+        onPress: function () { scrollToId("playbook", "start"); }
+      }));
+
+      /* No icon font (offline, blocked): hide the glyphs rather than print their names. */
+      if (document.fonts && document.fonts.load) {
+        var noIcons = function () { document.documentElement.classList.add("no-icons"); };
+        document.fonts.load('24px "Material Icons"', "place").then(function (faces) { if (!faces.length) noIcons(); }, noIcons);
+      }
+
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      /* ── Toast ─────────────────────────────────────────────── */
+      var toast = document.getElementById("toast"), toastTimer = 0;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("visible");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove("visible"); }, 2400);
+      }
+
+      /* ── Streak ─────────────────────────────────────────────────
+         Rules live in streak.js. `record` is what the page last read from the store;
+         every run reads it again, so a second tab or a tab left open overnight
+         can't write over something newer. */
+      var Streak = window.HereStreak;
+      var store = Streak.createStore((function () {
+        try { return window.localStorage; } catch (e) { return null; }
+      })());
+      var record = store.read();
+      var BLOCKED = "Storage is blocked here. Your streak lasts until you close this tab.";
+      function today() { return Streak.dayKey(new Date()); }
+
+      /* ── Run console ───────────────────────────────────────── */
+      /* The line under each step says what it touches before a run, and what it
+         found or did once the step is over, with the real values. */
+      var STEPS = [
+        ["Wake the page", 260],
+        ["Read your streak", 900],
+        ["Check it's a new day", 1100],
+        ["Write today's entry", 1400],
+        ["Stamp a fingerprint", 800],
+        ["Update your card", 520]
+      ];
+      var ZONE = (function () {
+        try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "local time"; } catch (e) { return "local time"; }
+      })();
+      var runDay = today();
+      function stepCmd(i) {
+        return ["date " + runDay + " · " + ZONE, 'localStorage "' + Streak.KEY + '"', "today against your last press",
+        'adds today to "' + Streak.KEY + '"', "SHA-256 of date + streak", "stats, check and card"][i];
+      }
+      function setCmd(i, text) { stepEls[i].querySelector(".cmd").textContent = text; }
+      function days(n) { return n + (n === 1 ? " day" : " days"); }
+
+      var stepsHost = document.getElementById("steps");
+      var statusEl = document.getElementById("consoleStatus");
+      var liveDot = document.getElementById("liveDot");
+      var liveText = document.getElementById("liveText");
+      var promptText = document.getElementById("promptText");
+      var dialLabel = document.getElementById("dialLabel");
+      var deckWrap = document.getElementById("deckWrap");
+      var stepEls = [];
+
+      STEPS.forEach(function (s) {
+        var row = document.createElement("div");
+        row.className = "step";
+        row.innerHTML = '<span class="tick"></span><span class="body"><span class="txt"></span><span class="cmd"></span></span><span class="meta"><b class="ts"></b><span class="t"></span></span>';
+        row.querySelector(".txt").textContent = s[0];
+        row.querySelector(".cmd").textContent = stepCmd(stepEls.length);
+        stepsHost.appendChild(row);
+        stepEls.push(row);
+      });
+
+      function stamp(d) {
+        var p = function (n, l) { return String(n).padStart(l || 2, "0"); };
+        return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds()) + "." + p(d.getMilliseconds(), 3);
+      }
+
+      var running = false, timers = [], typers = [], activeRun = null, pressQueued = false;
+
+      function typeInto(el, text, ms) {
+        if (reduced) { el.textContent = text; return; }
+        var i = 0, step = Math.max(1, Math.ceil(text.length / Math.max(1, ms / 16)));
+        el.textContent = "";
+        var id = setInterval(function () {
+          i = Math.min(text.length, i + step);
+          el.textContent = text.slice(0, i);
+          if (i >= text.length) clearInterval(id);
+        }, 16);
+        typers.push(id);
+      }
+
+      function resetRun() {
+        timers.forEach(clearTimeout); timers = [];
+        ringKeys.forEach(function (k) { k.classList.remove("run", "done"); });
+        typers.forEach(clearInterval); typers = [];
+        stepEls.forEach(function (el, i) {
+          el.classList.remove("run", "done");
+          el.querySelector(".t").textContent = "";
+          el.querySelector(".ts").textContent = "";
+          el.querySelector(".txt").textContent = STEPS[i][0];
+          el.querySelector(".cmd").textContent = stepCmd(i);
+        });
+      }
+
+      function setLive(busy, text) { liveDot.classList.toggle("busy", busy); liveText.textContent = text; }
+
+      function kick() {
+        if (reduced) return;
+        deckWrap.classList.remove("kick");
+        void deckWrap.offsetWidth;
+        deckWrap.classList.add("kick");
+      }
+
+      /* ── The deck ─────────────────────────────────────────────
+         Eight ritual keys ring the red key. During a run, the first six light
+         up in step order, so the deck and the log tell the same story. */
+      var DEFAULT_LABEL = "<b>Red key</b> · say you're still here";
+      var DECK = [
+        { id: 1, i: "bedtime", n: "Sleep" },
+        { id: 2, i: "visibility_off", n: "Close the chart" },
+        { id: 3, i: "water_drop", n: "Water" },
+        { id: 4, i: "notifications_off", n: "Mute the chat" },
+        { id: 5, i: "directions_walk", n: "Walk" },
+        { id: 6, i: "pan_tool", n: "Stop at one" },
+        { id: 7, i: "call", n: "Call a friend" },
+        { id: 8, i: "waving_hand", n: "Say hi" }
+      ];
+      /* clockwise from the top-left cell: grid cell index for each ring slot */
+      var RING_CELLS = [0, 1, 2, 5, 8, 7, 6, 3];
+      var plate = document.getElementById("plate");
+      var deck = document.getElementById("deck");
+      var stage = document.getElementById("deckStage");
+      var ringKeys = [];
+      var cells = [];
+
+      function buildKey(icon, label, big) {
+        var k = document.createElement("div");
+        k.className = "k" + (big ? " big" : "");
+        k.setAttribute("role", "button");
+        k.setAttribute("tabindex", "0");
+        k.setAttribute("aria-label", label);
+        k.innerHTML = '<div class="k-s"></div><div class="k-e"></div><div class="k-top"><span class="mi" aria-hidden="true"></span></div>';
+        k.querySelector(".mi").textContent = icon;
+        return k;
+      }
+
+      function wireKey(k, action, hoverText) {
+        var down = false;
+        var start = function () { if (down) return; down = true; k.classList.add("down"); thunk(false); };
+        var end = function (fire) { if (!down) return; down = false; k.classList.remove("down"); if (fire) { thunk(true); action(); } };
+        k.addEventListener("pointerdown", function (e) { e.preventDefault(); start(); });
+        k.addEventListener("pointerup", function () { end(true); });
+        k.addEventListener("pointerleave", function () { end(false); if (!running) dialLabel.innerHTML = DEFAULT_LABEL; });
+        k.addEventListener("pointerenter", function () { if (!running && hoverText) dialLabel.innerHTML = hoverText; });
+        k.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && !e.repeat) { e.preventDefault(); start(); } });
+        k.addEventListener("keyup", function (e) { if (e.key === "Enter" || e.key === " ") end(true); });
+        k.addEventListener("focus", function () { if (!running && hoverText) dialLabel.innerHTML = hoverText; });
+        k.addEventListener("blur", function () { if (!running) dialLabel.innerHTML = DEFAULT_LABEL; });
+        return { press: function () { start(); setTimeout(function () { end(true); }, 130); } };
+      }
+
+      for (var ci = 0; ci < 9; ci++) cells.push(null);
+      DECK.forEach(function (d, slot) {
+        var k = buildKey(d.i, "Inspect " + d.n, false);
+        var num = String(d.id).padStart(2, "0");
+        wireKey(k, function () {
+          select(d.id);
+          dialLabel.innerHTML = "<b>Key " + num + "</b> · " + d.n + " · open in the rituals below";
+        }, "<b>Key " + num + "</b> · " + d.n);
+        ringKeys.push(k);
+        cells[RING_CELLS[slot]] = k;
+      });
+
+      var bigKey = buildKey("power_settings_new", "Press the red key", true);
+      cells[4] = bigKey;
+      cells.forEach(function (k) { plate.appendChild(k); });
+
+      /* the camera eases in from a low angle on load, then follows the pointer */
+      requestAnimationFrame(function () { requestAnimationFrame(function () { deck.classList.remove("intro"); }); });
+      if (reduced) deck.classList.remove("intro");
+      if (!reduced && window.matchMedia("(hover: hover)").matches) {
+        stage.addEventListener("pointermove", function (e) {
+          var r = stage.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          deck.style.setProperty("--rz", (45 + x * 20).toFixed(2) + "deg");
+          deck.style.setProperty("--rx", (54.7 - y * 12).toFixed(2) + "deg");
+        });
+        stage.addEventListener("pointerleave", function () {
+          deck.style.removeProperty("--rz");
+          deck.style.removeProperty("--rx");
+        });
+      }
+
+      var redKey = {
+        el: bigKey,
+        set: function (cfg) {
+          if (cfg.i) bigKey.querySelector(".mi").textContent = cfg.i;
+          bigKey.classList.toggle("stop", cfg.c && cfg.c !== "red");
+        }
+      };
+      var bigWire = wireKey(bigKey, function () { redKey.onPress(redKey); }, null);
+      redKey.press = bigWire.press;
+
+      /* The six steps are the real thing: each action runs as its step ends, and
+         returning false ends the run there. Step 4 is the only write. Step 5 starts
+         hashing as it begins, because the digest is async. */
+      function noteBlocked(idx, text) {
+        stepEls[idx].querySelector(".txt").textContent = text + " · storage is blocked";
+      }
+
+      var ACTIONS = [
+        null,
+        function (run) {
+          record = store.read();
+          run.before = record;
+          var s = Streak.summary(record, run.day);
+          setCmd(1, s.total ? Streak.KEY + " · " + days(s.total) + (s.last ? ", last " + s.last : "") : Streak.KEY + " · nothing saved yet");
+          if (store.blocked()) {
+            noteBlocked(1, "Read your streak from this tab");
+            setCmd(1, "this tab only · storage is blocked");
+          }
+        },
+        function (run) {
+          if (record.days.indexOf(run.day) === -1) {
+            var last = Streak.summary(record, run.day).last;
+            setCmd(2, !last ? "first press" : "last press " + last + (last === Streak.prevDay(run.day) ? " · new day" : " · starts again at 1"));
+            return;
+          }
+          var day = Streak.streakAt(record.days, run.day);
+          setCmd(2, "already pressed " + run.day);
+          endRun("already here today — day " + day, "Already here today. Day " + day + ".", "already here today · day " + day);
+          return false;
+        },
+        function (run) {
+          var result = Streak.press(record, run.day);
+          record = result.state;
+          run.streak = result.streak;
+          run.wrote = true;
+          store.write(record);
+          setCmd(3, (store.blocked() ? "kept in this tab" : "saved " + run.day) + " · day " + run.streak);
+          if (store.blocked()) noteBlocked(3, "Write today's entry to this tab");
+        },
+        function (run) {
+          setCmd(4, 'sha256("' + Streak.stampInput(run.day, run.streak, run.stampedSlot) + '")');
+        },
+        function (run) {
+          if (run.stampedSlot !== null) {
+            record = Object.assign({}, record, { slot: { day: run.day, value: run.stampedSlot } });
+            store.write(record);
+            stepEls[5].querySelector(".txt").textContent = STEPS[5][0] + " · slot " + run.stampedSlot.toLocaleString("en-US");
+          }
+          renderStats();
+          resetCheck();
+          renderClaim();
+          setCmd(5, "stats, check and card updated");
+        }
+      ];
+
+      function stampRun(run, row) {
+        run.stampedSlot = run.slot;
+        Streak.fingerprint(Streak.stampInput(run.day, run.streak, run.slot)).then(function (hex) {
+          if (run !== activeRun) return;
+          row.querySelector(".txt").textContent = STEPS[4][0] + " · " + (hex ? hex.slice(0, 8) : "needs https");
+        });
+      }
+
+      /* A step that throws ends the run the way a halt does. Without this the run
+         would sit on "Running" with the key stuck, and the next press would halt. */
+      function guarded(idx, fn) {
+        return function () {
+          try { fn(); } catch (error) { failRun(idx, error); }
+        };
+      }
+
+      function runStep(idx) { guarded(idx, function () { startStep(idx); })(); }
+
+      function startStep(idx) {
+        var run = activeRun, row = stepEls[idx], began = performance.now();
+        var dur = reduced ? 120 : STEPS[idx][1];
+        row.classList.add("run");
+        ringKeys[idx].classList.add("run");
+        row.querySelector(".ts").textContent = stamp(new Date());
+        typeInto(row.querySelector(".cmd"), stepCmd(idx), Math.min(dur * 0.6, 420));
+        statusEl.textContent = "step " + (idx + 1) + " of " + STEPS.length;
+        if (idx === 4) stampRun(run, row);
+        timers.push(setTimeout(guarded(idx, function () {
+          row.classList.remove("run");
+          row.classList.add("done");
+          ringKeys[idx].classList.remove("run");
+          ringKeys[idx].classList.add("done");
+          row.querySelector(".t").textContent = ((performance.now() - began) / 1000).toFixed(2) + "s";
+          if (ACTIONS[idx] && ACTIONS[idx](run) === false) return;
+          if (idx + 1 < STEPS.length) { runStep(idx + 1); return; }
+          timers.push(setTimeout(function () {
+            var seconds = ((performance.now() - run.started) / 1000).toFixed(1);
+            endRun("done — day " + run.streak + " written · " + seconds + "s",
+              store.blocked() ? BLOCKED : "You're here. Day " + run.streak + ".",
+              "day " + run.streak + (store.blocked() ? " kept in this tab" : " saved"));
+          }, 200));
+        }), dur));
+      }
+
+      function settleRun(status) {
+        activeRun = null;
+        running = false;
+        document.body.classList.remove("running");
+        statusEl.textContent = status;
+        dialLabel.innerHTML = DEFAULT_LABEL;
+        setLive(false, "Ready");
+        redKey.set({ c: "red", i: "power_settings_new" });
+      }
+
+      function endRun(status, message, prompt) {
+        settleRun(status);
+        promptText.textContent = prompt;
+        showToast(message);
+        timers.push(setTimeout(function () { ringKeys.forEach(function (k) { k.classList.remove("done"); }); }, 1600));
+      }
+
+      /* A halt can land after step 4 has written. Putting the record back is what
+         makes "nothing written" true at every point of the run. */
+      /* Whatever stops a run part way puts the record back, so "nothing written"
+         is true even after step 4 has written. */
+      function undoRun(run) {
+        resetRun();
+        if (!run.wrote) return;
+        record = run.before;
+        store.write(record);
+        renderStats();
+        resetCheck();
+      }
+
+      function failRun(idx, error) {
+        if (!activeRun) return;
+        if (window.console) console.error(error);
+        undoRun(activeRun);
+        settleRun("stopped at step " + (idx + 1) + " — nothing written");
+        promptText.textContent = "stopped ✓ nothing written";
+        showToast("Something went wrong at step " + (idx + 1) + ". Nothing was written.");
+      }
+
+      function haltRun() {
+        undoRun(activeRun);
+        settleRun("halted — nothing written");
+        typeInto(promptText, "halted ✓ nothing written", 400);
+        showToast("Halted. Nothing was written.");
+      }
+
+      /* Never holds up the press: a slot that hasn't answered by step 5 is left out. */
+      function fetchSlot(run) {
+        var abort = new AbortController();
+        var timer = setTimeout(function () { abort.abort(); }, 2000);
+        fetch(CONFIG.SOLANA_RPC, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "getSlot" }),
+          signal: abort.signal
+        }).then(function (res) { return res.json(); }).then(function (data) {
+          if (Number.isSafeInteger(data.result)) run.slot = data.result;
+        }).catch(function () { }).then(function () { clearTimeout(timer); });
+      }
+
+      redKey.onPress = function () {
+        pressQueued = false;
+        if (running) { haltRun(); return; }
+        runDay = today();
+        running = true;
+        activeRun = { day: runDay, before: record, wrote: false, streak: 0, slot: null, stampedSlot: null, started: performance.now() };
+        resetRun();
+        kick();
+        document.body.classList.add("running");
+        redKey.set({ c: "slate", i: "stop" });
+        setLive(true, "Running");
+        dialLabel.innerHTML = "<b>Running</b> · press again to halt";
+        promptText.textContent = "running · press again to halt";
+        if (CONFIG.SOLANA_SLOT) fetchSlot(activeRun);
+        runStep(0);
+      };
+
+      /* Swapped text is matched word for word, so its spacing is made plain first.
+         A formatter breaking the paragraph across lines can't stop a swap. */
+      function plainText(el) { return el.textContent.replace(/\s+/g, " ").trim(); }
+
+      /* A slot request is a network call, so these lines can't claim otherwise. */
+      if (CONFIG.SOLANA_SLOT) {
+        var heroDesc = document.getElementById("heroDesc");
+        heroDesc.textContent = plainText(heroDesc).replace("no transaction.", "no transaction, one request for the current slot.");
+        document.getElementById("heroNote").textContent = "Press the red key. Once a day.";
+        document.getElementById("trustLocal").textContent = "One press a day";
+      }
+
+      /* pressQueued stops a double tap landing as press-then-halt. */
+      var heroPrimary = mount("heroPrimary", make({
+        c: "red", l: "Press the key", h: 52, i: "play_arrow", sw: 2.3,
+        onPress: function () {
+          document.querySelector(".console").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+          if (running || pressQueued) return;
+          pressQueued = true;
+          setTimeout(function () { redKey.press(); }, reduced ? 0 : 320);
+        }
+      }));
+
+      /* ── Stats ─────────────────────────────────────────────── */
+      function formatDay(day) {
+        var p = day.split("-").map(Number);
+        return new Date(p[0], p[1] - 1, p[2], 12).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      }
+
+      function renderStats() {
+        renderYourDay();
+        var s = Streak.summary(record, today()), seen = s.total > 0;
+        document.getElementById("statCurrent").innerHTML = seen ? s.current + "<small>d</small>" : "—";
+        document.getElementById("statLongest").innerHTML = seen ? s.longest + "<small>d</small>" : "—";
+        document.getElementById("statTotal").textContent = seen ? s.total : "—";
+        document.getElementById("statLast").textContent = seen && s.last ? formatDay(s.last) : "—";
+      }
+
+      /* ── Streak check ──────────────────────────────────────── */
+      var meterFill = document.getElementById("meterFill"), meter = document.getElementById("meter");
+      var auditStatus = document.getElementById("auditStatus"), auditPercent = document.getElementById("auditPercent");
+      var grade = document.getElementById("grade"), auditTimer = 0;
+      var CHECK_IDLE = "Not checked yet. Press the key, then run the check. It reads your own streak, nothing else.";
+
+      function setMeter(p) {
+        meterFill.style.width = p + "%";
+        auditPercent.textContent = p + "%";
+        meter.setAttribute("aria-valuenow", String(p));
+      }
+
+      function renderGrade() {
+        var letter = Streak.gradeFor(Streak.summary(record, today()).current);
+        if (grade.textContent === letter) return;
+        grade.textContent = letter;
+        grade.classList.remove("ok");
+      }
+
+      function resetCheck() {
+        clearInterval(auditTimer);
+        setMeter(0);
+        auditStatus.textContent = CHECK_IDLE;
+        auditBtn.set({ l: "Run check", c: "red" });
+        grade.classList.remove("ok");
+        renderGrade();
+      }
+
+      function checkDone(btn, streak) {
+        var next = Streak.nextMilestone(streak);
+        var milestone = next === null ? "Every milestone passed." : "Next milestone: " + next + " days.";
+        grade.textContent = Streak.gradeFor(streak);
+        grade.classList.toggle("ok", streak > 0);
+        auditStatus.textContent = streak > 0
+          ? "Streak read. This letter is only a label for your streak, not a rating of anything else. " + milestone
+          : "Streak read. No streak running. Press the key and begin again at one. " + milestone;
+        btn.set({ l: "Run again", c: "red" });
+        showToast("Check done. Day " + streak + ".");
+      }
+
+      var auditBtn = mount("auditBtn", make({
+        c: "red", l: "Run check", h: 48, i: "fact_check",
+        onPress: function (btn) {
+          clearInterval(auditTimer);
+          record = store.read();
+          var s = Streak.summary(record, today());
+          if (!s.total) { showToast("Press the key first."); return; }
+          var target = Streak.meterPercent(s.current), p = 0;
+          btn.set({ l: "Checking", c: "slate" });
+          grade.textContent = "…";
+          grade.classList.remove("ok");
+          auditStatus.textContent = "Reading your streak and counting to the next milestone.";
+          setMeter(0);
+          if (reduced) { setMeter(target); checkDone(btn, s.current); return; }
+          auditTimer = setInterval(function () {
+            p = Math.min(target, p + Math.max(1, Math.ceil(target / 14)));
+            setMeter(p);
+            if (p < target) return;
+            clearInterval(auditTimer);
+            checkDone(btn, s.current);
+          }, 90);
+        }
+      }));
+
+      /* The streak and fingerprint as of the last press, recomputed from the record
+         so a reload gives the same card the run would have. */
+      function lastStamp() {
+        var last = Streak.summary(record, today()).last;
+        var streak = Streak.streakAt(record.days, last);
+        var slot = record.slot && record.slot.day === last ? record.slot.value : null;
+        return Streak.fingerprint(Streak.stampInput(last, streak, slot)).then(function (hex) {
+          return { day: last, streak: streak, slot: slot, short: hex ? hex.slice(0, 8) : null };
+        });
+      }
+
+      function saveBlob(blob, name) {
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      }
+
+      function cardFonts() {
+        if (!document.fonts || !document.fonts.load) return Promise.resolve();
+        return Promise.all([
+          document.fonts.load('800 112px "Bricolage Grotesque"'),
+          document.fonts.load('500 21px "DM Mono"'),
+          document.fonts.load('104px "Material Icons"', "power_settings_new")
+        ]).catch(function () { });
+      }
+
+      function drawCard(st) {
+        var W = 1200, H = 630;
+        var canvas = document.createElement("canvas");
+        canvas.width = W;
+        canvas.height = H;
+        var g = canvas.getContext("2d");
+        var css = getComputedStyle(document.documentElement);
+        var color = function (name) { return css.getPropertyValue(name).trim(); };
+        var ink = color("--ink"), muted = color("--muted"), red = color("--red");
+        var display = '"Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif';
+        var mono = '"DM Mono", ui-monospace, Menlo, monospace';
+        var shape = function (w, h, r, x, y) { return new Path2D(S(w, h, r, x, y)); };
+        var write = function (str, x, y, font, fill, spacing) {
+          g.font = font;
+          g.fillStyle = fill;
+          if ("letterSpacing" in g) g.letterSpacing = spacing || "0px";
+          g.fillText(str, x, y);
+        };
+
+        g.fillStyle = color("--paper");
+        g.fillRect(0, 0, W, H);
+
+        /* the bento, hard shadow first */
+        var bx = 42, by = 42, bw = 1100, bh = 530, split = 806;
+        var bento = shape(bw, bh, 44, bx, by);
+        g.fillStyle = color("--shadow-c");
+        g.fill(shape(bw, bh, 44, bx + 14, by + 14));
+        g.fillStyle = color("--surface");
+        g.fill(bento);
+
+        /* dotted panel, as behind the deck */
+        g.save();
+        g.clip(bento);
+        g.fillStyle = color("--tint");
+        g.fillRect(split, by, bx + bw - split, bh);
+        g.fillStyle = "rgba(22, 21, 19, 0.16)";
+        for (var dy = by + 14; dy < by + bh; dy += 26) {
+          for (var dx = split + 14; dx < bx + bw; dx += 26) {
+            g.beginPath();
+            g.arc(dx, dy, 2, 0, Math.PI * 2);
+            g.fill();
+          }
+        }
+        g.restore();
+        g.strokeStyle = ink;
+        g.lineWidth = 6;
+        g.beginPath();
+        g.moveTo(split, by);
+        g.lineTo(split, by + bh);
+        g.stroke();
+        g.stroke(bento);
+
+        /* the red key: same outline and extrusion idea as the page keys */
+        var side = 196, depth = 30;
+        var kx = split + (bx + bw - split - side) / 2, ky = by + (bh - side - depth) / 2;
+        g.lineWidth = 6;
+        for (var d = depth; d >= 0; d -= 2) {
+          g.fillStyle = d ? "#" + HEXES[COLORS.red * 2 + 1] : red;
+          g.fill(shape(side, side, 56, kx, ky + d));
+          if (d === depth || d === 0) g.stroke(shape(side, side, 56, kx, ky + d));
+        }
+        if (!document.documentElement.classList.contains("no-icons")) {
+          g.textAlign = "center";
+          g.textBaseline = "middle";
+          write("power_settings_new", kx + side / 2, ky + side / 2 + 4, '104px "Material Icons"', "#fff");
+          g.textAlign = "left";
+          g.textBaseline = "alphabetic";
+        }
+
+        /* copy */
+        var x = 94;
+        write((CONFIG.NAME + " · " + CONFIG.TICKER).toUpperCase(), x, 118, "500 21px " + mono, muted, "2px");
+        write("Day " + st.streak + ".", x, 246, "800 112px " + display, ink, "-5px");
+        write("Still here.", x, 346, "800 112px " + display, red, "-5px");
+
+        var rows = ["Last press " + st.day];
+        if (st.short) rows.push("Fingerprint " + st.short);
+        if (st.slot !== null) rows.push("Slot " + st.slot.toLocaleString("en-US") + " · recorded by this page at press time");
+        rows.push("self-reported");
+        rows.reverse().forEach(function (row, i) {
+          write(row, x, 526 - i * 34, "500 21px " + mono, i ? ink : muted);
+        });
+        return canvas;
+      }
+
+      function saveCard() {
+        if (!record.days.length) { showToast("Press the key first."); return; }
+        Promise.all([lastStamp(), cardFonts()]).then(function (results) {
+          var st = results[0];
+          drawCard(st).toBlob(function (blob) {
+            var name = "here-card-day-" + st.streak + ".png";
+            var download = function () { saveBlob(blob, name); showToast("Card saved."); };
+            if (typeof File !== "function") { download(); return; }
+            shareSheet({ files: [new File([blob], name, { type: "image/png" })], text: "Day " + st.streak + ". Still here." }, download);
+          }, "image/png");
+        });
+      }
+
+      var auditExport = mount("auditExport", make({ c: "white", l: "Save card", h: 48, i: "download", onPress: saveCard }));
+
+      /* ── Sharing ───────────────────────────────────────────────
+         On a phone the share sheet is the natural place for a card or a link, so it
+         gets them. Computers download the card and copy the link. Closing the sheet
+         is the visitor's choice; only a real failure falls back. */
+      var touchFirst = window.matchMedia("(pointer: coarse)");
+      function shareSheet(data, fallback) {
+        var can = touchFirst.matches && typeof navigator.share === "function" &&
+          (!data.files || (typeof navigator.canShare === "function" && navigator.canShare(data)));
+        if (!can) { fallback(); return; }
+        navigator.share(data).catch(function (e) { if (!e || e.name !== "AbortError") fallback(); });
+      }
+
+      /* ── Your day: the visitor's own line, from this device ── */
+      var yourDay = document.getElementById("yourDay");
+      var dayLine = document.getElementById("dayLine"), dayCaption = document.getElementById("dayCaption");
+      var shareDayKey = mount("shareDay", make({
+        c: "white", l: "Share my day", h: 44, i: "share",
+        onPress: function () {
+          var n = Streak.summary(store.read(), today()).current;
+          if (!n) return;
+          var url = window.location.href.split("#")[0] + "#day=" + n;
+          shareSheet({ text: "Day " + n + ". Still here.", url: url }, function () { copyText(url, "Link copied."); });
+        }
+      }));
+
+      function renderYourDay() {
+        var s = Streak.summary(record, today());
+        yourDay.classList.toggle("empty", !s.current);
+        shareDayKey.el.hidden = !s.current;
+        if (!s.last) {
+          dayLine.textContent = "Press the key and your day shows up here.";
+          dayCaption.textContent = "Just you";
+          return;
+        }
+        dayCaption.textContent = "You · " + formatDay(s.last);
+        dayLine.textContent = s.current
+          ? "Day " + s.current + ". Still here."
+          : "Your last streak was " + days(Streak.streakAt(record.days, s.last)) + ". Press the key to start again.";
+      }
+
+      /* ── Daily reminder: a calendar file, made here, sent nowhere ── */
+      var reminderTime = document.getElementById("reminderTime");
+      mount("reminderKey", make({
+        c: "white", l: "Add to calendar", h: 44, i: "event",
+        onPress: function () {
+          var text = Streak.reminderCalendar({
+            time: reminderTime.value, day: today(), url: window.location.href.split("#")[0], name: CONFIG.NAME,
+            now: Date.now(), uid: Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
+          });
+          if (!text) { showToast("Pick a time first."); return; }
+          saveBlob(new Blob([text], { type: "text/calendar" }), "here-reminder.ics");
+          showToast("Calendar file saved. Open it to add the reminder.");
+        }
+      }));
+
+      document.getElementById("exportBtn").addEventListener("click", function () {
+        if (!record.days.length) { showToast("Press the key first."); return; }
+        saveBlob(new Blob([JSON.stringify(record, null, 2)], { type: "application/json" }), "here-streak.json");
+        showToast("Streak exported.");
+      });
+
+      var importFile = document.getElementById("importFile");
+      document.getElementById("importBtn").addEventListener("click", function () {
+        if (running) { showToast("Let the run finish first."); return; }
+        importFile.click();
+      });
+      importFile.addEventListener("change", function () {
+        var file = importFile.files[0];
+        importFile.value = "";
+        if (!file) return;
+        var fail = function () { showToast("Import failed. That file is not a streak."); };
+        if (file.size > 1048576) { fail(); return; }
+        file.text().then(function (text) {
+          var parsed = Streak.parseImport(text, today());
+          if (!parsed.ok || running) { fail(); return; }
+          /* merged, never replaced: an old backup can't erase newer days */
+          record = Streak.merge(store.read(), parsed.days);
+          store.write(record);
+          refresh();
+          resetCheck();
+          var day = Streak.summary(record, today()).current;
+          showToast(day ? "Streak imported. Day " + day + "." : "Streak imported.");
+        }, fail);
+      });
+
+      /* ── Wallets ───────────────────────────────────────────────
+         This page calls connect, disconnect and signMessage on a wallet and nothing
+         else. There is no code here that builds or asks for a transaction. */
+      var WALLETS = [
+        {
+          name: "Phantom", page: "https://phantom.com/download", browse: "https://phantom.com/ul/browse/",
+          find: function () { return window.phantom && window.phantom.solana && window.phantom.solana.isPhantom ? window.phantom.solana : null; }
+        },
+        {
+          name: "Solflare", page: "https://solflare.com/download", browse: "https://solflare.com/ul/v1/browse/",
+          find: function () { return window.solflare && window.solflare.isSolflare ? window.solflare : null; }
+        }
+      ];
+      var connected = null;   /* { wallet, provider, address } */
+      var listening = new WeakSet();
+      var walletMenu = document.getElementById("walletMenu");
+      var phoneWallets = window.matchMedia("(pointer: coarse)");
+
+      var walletKey = CONFIG.WALLETS ? mount("walletCta", make({
+        c: "white", l: "Connect", h: 36, i: "account_balance_wallet",
+        onPress: function () { if (walletMenu.hidden) openWalletMenu(); else closeWalletMenu(); }
+      })) : null;
+      if ((navCta || xKey) && walletKey) document.querySelector(".topbar").classList.add("crowded");
+
+      function shortAddress(address) { return address.slice(0, 4) + "…" + address.slice(-4); }
+
+      function tag(name, className, text) {
+        var el = document.createElement(name);
+        if (className) el.className = className;
+        if (text) el.textContent = text;
+        return el;
+      }
+
+      function renderWalletMenu() {
+        walletMenu.textContent = "";
+        if (connected) {
+          var actions = tag("div", "wallet-actions");
+          var copy = tag("button", "text-button", "Copy address");
+          var leave = tag("button", "text-button", "Disconnect");
+          copy.type = leave.type = "button";
+          copy.addEventListener("click", function () { copyText(connected.address, "Address copied."); });
+          leave.addEventListener("click", disconnectWallet);
+          actions.appendChild(copy);
+          actions.appendChild(leave);
+          walletMenu.appendChild(tag("p", "eyebrow", "Connected · " + connected.wallet.name));
+          walletMenu.appendChild(tag("p", "wallet-address", connected.address));
+          walletMenu.appendChild(actions);
+        } else {
+          walletMenu.appendChild(tag("p", "eyebrow", "Connect a wallet"));
+          WALLETS.forEach(function (wallet) {
+            var row;
+            if (wallet.find()) {
+              row = tag("button", "wallet-row", wallet.name);
+              row.type = "button";
+              row.appendChild(tag("small", "", "Detected"));
+              row.addEventListener("click", function () { connectWallet(wallet); });
+            } else {
+              row = tag("a", "wallet-row", (phoneWallets.matches ? "Open in " : "Get ") + wallet.name);
+              row.href = phoneWallets.matches
+                ? wallet.browse + encodeURIComponent(window.location.href) + "?ref=" + encodeURIComponent(window.location.origin)
+                : wallet.page;
+              row.target = "_blank";
+              row.rel = "noopener noreferrer";
+            }
+            walletMenu.appendChild(row);
+          });
+        }
+        var note = "This page sees your public address, nothing else. It never asks for a transaction.";
+        if (claim.live) note += " Claiming sends that address to the payout service.";
+        walletMenu.appendChild(tag("p", "wallet-note", note));
+        if (!connected && phoneWallets.matches && !WALLETS.some(function (w) { return w.find(); })) {
+          walletMenu.appendChild(tag("p", "wallet-note", "Wallet browsers keep their own streak. Export it here and import it there."));
+        }
+      }
+
+      function openWalletMenu() { renderWalletMenu(); walletMenu.hidden = false; }
+      function closeWalletMenu() { walletMenu.hidden = true; }
+
+      document.addEventListener("pointerdown", function (e) {
+        if (walletMenu.hidden || walletMenu.contains(e.target) || (walletKey && walletKey.el.contains(e.target))) return;
+        closeWalletMenu();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeWalletMenu(); });
+
+      function walletChanged() {
+        if (walletKey) {
+          walletKey.set(connected
+            ? { l: shortAddress(connected.address), raw: true, i: "check" }
+            : { l: "Connect", raw: false, i: "account_balance_wallet" });
+          walletKey.el.setAttribute("aria-label", connected ? "Wallet " + connected.address : "Connect a wallet");
+        }
+        if (!walletMenu.hidden) renderWalletMenu();
+        claim.note = "";
+        renderClaim();
+      }
+
+      function connectWallet(wallet) {
+        var provider = wallet.find();
+        return Promise.resolve(provider.connect()).then(function () {
+          if (!provider.publicKey) throw new Error("No public key");
+          connected = { wallet: wallet, provider: provider, address: String(provider.publicKey) };
+          if (provider.on && !listening.has(provider)) {
+            listening.add(provider);
+            provider.on("disconnect", function () { if (connected && connected.provider === provider) { connected = null; walletChanged(); } });
+            provider.on("accountChanged", function (key) {
+              if (!connected || connected.provider !== provider) return;
+              if (key) connected.address = String(key); else connected = null;
+              walletChanged();
+            });
+          }
+          closeWalletMenu();
+          walletChanged();
+          return true;
+        }).catch(function () {
+          showToast("Wallet connection cancelled.");
+          return false;
+        });
+      }
+
+      function disconnectWallet() {
+        var provider = connected.provider;
+        connected = null;
+        closeWalletMenu();
+        walletChanged();
+        Promise.resolve().then(function () { return provider.disconnect && provider.disconnect(); }).catch(function () { });
+      }
+
+      /* Phantom answers { signature }, Solflare can answer the bytes themselves. */
+      function hexOf(signed) {
+        return Array.from(signed.signature || signed).map(function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+      }
+
+      var signBtn = document.getElementById("signBtn");
+      function signProof() {
+        if (!record.days.length) { showToast("Press the key first."); return; }
+        var first = WALLETS.filter(function (w) { return w.find(); })[0];
+        (connected ? Promise.resolve(true) : connectWallet(first)).then(function (ready) {
+          if (!ready) return;
+          return lastStamp().then(function (st) {
+            var message = ["HERE", st.day, st.streak, st.short || "none"].join("|");
+            return connected.provider.signMessage(new TextEncoder().encode(message)).then(function (signed) {
+              var proof = {
+                message: message,
+                signature_hex: hexOf(signed),
+                public_key: connected.address,
+                note: "Message-only signature. No transaction, no funds. It proves this wallet approved this message, not who the person is."
+              };
+              saveBlob(new Blob([JSON.stringify(proof, null, 2)], { type: "application/json" }), "here-proof.json");
+              showToast("Proof saved.");
+            });
+          });
+        }).catch(function () { showToast("Signature cancelled."); });
+      }
+      if (CONFIG.SIGNATURE) {
+        signBtn.addEventListener("click", signProof);
+        window.addEventListener("load", function () { signBtn.hidden = !WALLETS.some(function (w) { return w.find(); }); });
+      }
+
+      /* ── Claim ─────────────────────────────────────────────────
+         Nothing about paying appears unless CLAIM_URL is set and the service answers
+         that it's live, so the page can't promise money nobody will send. Every amount
+         comes from the service. The press is only checked here, in this browser. What
+         the service enforces is the holding minimums, how long they've been held, and
+         the claims per UTC day. */
+      var claim = { live: false, usd: 0, hold: 0, twice: 0, hours: 0, poolLeft: true, busy: false, note: "" };
+      var claimSection = document.getElementById("claim"), claimStatus = document.getElementById("claimStatus");
+      var CLAIM_REPLIES = {
+        already: "Already claimed today. Come back tomorrow.",
+        closed: "Today's pool has run out. It refills at 00:00 UTC.",
+        failed: "Claim failed. Nothing was sent. Try again.",
+        unavailable: "Claims are paused right now. Nothing was sent. Try again later.",
+        pending: "Still confirming. Check your wallet before trying again.",
+        wrong_day: "Your clock looks off. Fix it and try again.",
+        bad_signature: "That signature didn't check out. Nothing was sent."
+      };
+      function money() { return "$" + claim.usd.toFixed(2); }
+      function worth() { return money() + " worth of " + CONFIG.TICKER; }
+      function holdTime() { return claim.hours + (claim.hours === 1 ? " hour" : " hours"); }
+      function utcToday() { return new Date().toISOString().slice(0, 10); }
+
+      function sentToday() {
+        try {
+          var sent = JSON.parse(window.localStorage.getItem("here.claim"));
+          if (!sent || sent.day !== utcToday()) return null;
+          return !connected || sent.wallet === connected.address ? sent : null;
+        } catch (e) { return null; }
+      }
+
+      function renderClaim() {
+        if (!claim.live) return;
+        var sent = sentToday(), pressed = record.days.indexOf(today()) !== -1;
+        var more = Boolean(sent) && sent.left > 0;
+        claimSection.hidden = false;
+        claimKey.el.hidden = (Boolean(sent) && !more) || !claim.poolLeft;
+        if (more) claimKey.set({ l: "Claim again" });
+        if (claim.note) { claimStatus.textContent = claim.note; return; }
+        if (sent) {
+          var link = tag("a", "", "View transaction");
+          link.href = "https://solscan.io/tx/" + encodeURIComponent(sent.tx);
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          claimStatus.textContent = "Sent " + sent.amount + " " + CONFIG.TICKER + ". ";
+          claimStatus.appendChild(link);
+          if (more) claimStatus.appendChild(document.createTextNode(". One more claim today."));
+          return;
+        }
+        if (!claim.poolLeft) claimStatus.textContent = CLAIM_REPLIES.closed;
+        else if (!pressed) claimStatus.textContent = "Press the key, then claim " + worth() + ".";
+        else if (!connected) claimStatus.textContent = "Connect Phantom or Solflare to claim " + worth() + ".";
+        else claimStatus.textContent = "Ready. Claim " + worth() + ".";
+      }
+
+      function claimReply(reply) {
+        if (reply.status === "paid") {
+          var whole = Number(reply.raw) / Math.pow(10, reply.decimals);
+          var amount = (whole >= 1 ? Math.floor(whole) : whole).toLocaleString("en-US");
+          try {
+            window.localStorage.setItem("here.claim", JSON.stringify({ wallet: connected.address, day: utcToday(), tx: reply.tx, amount: amount, left: reply.left || 0 }));
+          } catch (e) { }
+          claim.note = "";
+          showToast("Sent. Thanks for being here.");
+        } else {
+          if (reply.status === "below_minimum") claim.note = "This wallet holds under $" + claim.hold + " worth of " + CONFIG.TICKER + ". Claims start at $" + claim.hold + ".";
+          else if (reply.status === "held_too_short") claim.note = CONFIG.TICKER + " has to stay in this wallet for " + holdTime() + " before it can claim. Come back after that.";
+          else claim.note = CLAIM_REPLIES[reply.status] || CLAIM_REPLIES.failed;
+          if (reply.status === "closed") claim.poolLeft = false;
+        }
+      }
+
+      function pressClaim(key) {
+        if (claim.busy) return;
+        if (record.days.indexOf(today()) === -1) { showToast("Press the key first."); return; }
+        if (!connected) { openWalletMenu(); return; }
+        var wallet = connected.address, day = utcToday();
+        claim.busy = true;
+        claim.note = "";
+        key.set({ l: "Signing", c: "slate" });
+        connected.provider.signMessage(new TextEncoder().encode("HERE claim|" + wallet + "|" + day)).then(function (signed) {
+          claimStatus.textContent = "Sending your claim.";
+          return fetch(CONFIG.CLAIM_URL + "/claim", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ wallet: wallet, day: day, signature: hexOf(signed) })
+          }).then(function (res) { return res.json(); }).then(claimReply, function () {
+            claim.note = "The claim service didn't reply. Check your wallet before trying again.";
+          });
+        }, function () {
+          showToast("Claim cancelled.");
+        }).then(function () {
+          claim.busy = false;
+          key.set({ l: "Claim " + money(), c: "red" });
+          renderClaim();
+        });
+      }
+
+      var claimKey = CONFIG.CLAIM_URL && CONFIG.WALLETS ? mount("claimKey", make({ c: "red", l: "Claim", h: 44, i: "redeem", onPress: pressClaim })) : null;
+
+      function applyClaimCopy() {
+        var hold = "$" + claim.hold + " worth", twice = "$" + claim.twice + " worth";
+        var heroDesc = document.getElementById("heroDesc");
+        heroDesc.textContent = plainText(heroDesc).replace(/Press it once a day, no transaction\./,
+          "Press it once a day. Hold " + hold + " of " + CONFIG.TICKER + " in Phantom or Solflare for " + holdTime() + " and every check-in pays " + money() + " worth, while today's pool lasts. Hold " + twice + " and claim twice a day.");
+        document.getElementById("heroNote").textContent = "Press the red key, then claim. You only sign a message.";
+        document.getElementById("trustTx").textContent = "Message signature only";
+        document.getElementById("trustLocal").textContent = "One press a day";
+        document.getElementById("movePress").textContent = "Press it. The log runs, the day is written, the streak goes up by one. Hold " + hold + " of " + CONFIG.TICKER + " for " + holdTime() + " and claim " + money() + " worth. Hold " + twice + " and claim twice.";
+        document.getElementById("claimTiers").textContent = "Keep " + hold + " in the wallet for " + holdTime() + " and claim once a day. Keep " + twice + " and claim twice.";
+        var terms = document.getElementById("claimTerms");
+        terms.textContent = "Each claim pays " + worth() + " at the market rate when you claim, while the daily pool lasts. Claiming needs at least " + hold + " of " + CONFIG.TICKER +
+          " in the wallet for the past " + holdTime() + ", and " + twice + " allows two claims a UTC day. The lowest balance in that time is what counts, valued at the market rate when you claim. Claiming sends your wallet address to the payout service, and the payment is public on Solana.";
+        terms.hidden = false;
+      }
+
+      function checkClaims() {
+        if (!claimKey) return;
+        var abort = new AbortController();
+        var timer = setTimeout(function () { abort.abort(); }, 3000);
+        fetch(CONFIG.CLAIM_URL + "/status", { signal: abort.signal }).then(function (res) { return res.json(); }).then(function (service) {
+          if (!service || service.live !== true || !(service.usd > 0) || !(service.holdUsd > 0) || !(service.twiceUsd > 0) || !(service.holdHours > 0)) return;
+          claim.live = true;
+          claim.usd = service.usd;
+          claim.hold = service.holdUsd;
+          claim.twice = service.twiceUsd;
+          claim.hours = service.holdHours;
+          claim.poolLeft = service.poolLeft !== false;
+          claimKey.set({ l: "Claim " + money() });
+          applyClaimCopy();
+          renderClaim();
+        }).catch(function () { }).then(function () { clearTimeout(timer); });
+      }
+
+      /* ── Phones ─────────────────────────────────────────────
+         A key's width comes from its label, so on a narrow screen the labelled
+         keys would run past their card and Chart would push the bar wider than
+         the page. Under 560px Chart becomes an icon-only key and the hero and
+         check keys take the full width of their column. Matches the CSS query. */
+      var phone = window.matchMedia("(max-width: 560px)");
+      /* Chart and Connect side by side, with their labels, need about 720px. */
+      var tightNav = window.matchMedia(navCta && walletKey ? "(max-width: 720px)" : "(max-width: 560px)");
+      function fitPhone() {
+        if (navCta) navCta.set({ sq: tightNav.matches });
+        if (xKey) xKey.set({ sq: tightNav.matches });
+        if (walletKey) walletKey.set({ sq: tightNav.matches });
+        [heroPrimary, heroGhost, auditBtn, auditExport, claimKey].forEach(function (k) { if (k) k.set({ full: phone.matches }); });
+      }
+      fitPhone();
+      [phone, tightNav].forEach(function (query) {
+        if (query.addEventListener) query.addEventListener("change", fitPhone);
+        else if (query.addListener) query.addListener(fitPhone);
+      });
+
+      /* ── Rituals ───────────────────────────────────────────── */
+      var RITUALS = [
+        {
+          id: 1, name: "Sleep", cat: "recovery", catLabel: "Body", scope: "Tonight", i: "bedtime",
+          summary: "Lights out before the chart does.",
+          what: "Puts the phone across the room and ends the day on purpose, not by accident.",
+          wont: "Wake you up to check a candle.",
+          takes: "Tonight"
+        },
+        {
+          id: 2, name: "Close the chart", cat: "deploy", catLabel: "Mind", scope: "Any time", i: "visibility_off",
+          summary: "Shuts the tab. The chart moves fine without you.",
+          what: "Closes the chart tab and puts the phone face down for ten minutes.",
+          wont: "Sell anything for you or tell you what to do with a position.",
+          takes: "Ten minutes"
+        },
+        {
+          id: 3, name: "Water", cat: "recovery", catLabel: "Body", scope: "Any time", i: "water_drop",
+          summary: "One glass, before the next decision.",
+          what: "Gets one glass of water into you before you decide anything else.",
+          wont: "Fix the portfolio. Only the thirst.",
+          takes: "One glass"
+        },
+        {
+          id: 4, name: "Mute the chat", cat: "deploy", catLabel: "Mind", scope: "Any time", i: "notifications_off",
+          summary: "Silences the loudest group for an hour.",
+          what: "Mutes the loudest channel so you can hear your own thoughts.",
+          wont: "Leave the group. Muting is not quitting.",
+          takes: "One hour"
+        },
+        {
+          id: 5, name: "Walk", cat: "recovery", catLabel: "Body", scope: "Daytime", i: "directions_walk",
+          summary: "Ten minutes outside, phone in pocket.",
+          what: "Gets you outside for ten minutes with nothing to refresh.",
+          wont: "Count your steps or post about it.",
+          takes: "Ten minutes"
+        },
+        {
+          id: 6, name: "Stop at one", cat: "deploy", catLabel: "Mind", scope: "Per session", i: "pan_tool",
+          summary: "Decide when the session ends, in advance.",
+          what: "Sets the stopping point before you start, while you're calm.",
+          wont: "Pick the number for you.",
+          takes: "Before you start"
+        },
+        {
+          id: 7, name: "Call a friend", cat: "security", catLabel: "People", scope: "Always available", i: "call",
+          summary: "A voice, not a chat.",
+          what: "Rings one person who has never heard of a bonding curve.",
+          wont: "Ask for money, or tips.",
+          takes: "Five minutes"
+        },
+        {
+          id: 8, name: "Say hi", cat: "security", catLabel: "People", scope: "Daily", i: "waving_hand",
+          summary: "Tell one person you're still here.",
+          what: "Sends one real message: still here, hope you are too.",
+          wont: "Shill anything to them.",
+          takes: "One message"
+        }
+      ];
+
+      var cardsHost = document.getElementById("cards");
+      var filters = Array.prototype.slice.call(document.querySelectorAll(".filter"));
+      var selected = 1, filter = "all";
+      var detail = {
+        scope: document.getElementById("detailScope"), number: document.getElementById("detailNumber"),
+        cat: document.getElementById("detailCat"), title: document.getElementById("detailTitle"),
+        what: document.getElementById("detailWhat"), wont: document.getElementById("detailWont"),
+        takes: document.getElementById("detailApproval")
+      };
+      var detailKey = mount("detailKey", make({ c: "red", i: "restart_alt", sq: true, h: 46, aria: "Mark Sleep done today", onPress: function () { toggleTick(selected); } }));
+      var ritualIds = RITUALS.map(function (r) { return r.id; });
+
+      /* Today's ticks, under their own key. If storage fails they carry on in memory
+         for this tab, the same way the streak does. */
+      var tickMemory = null;
+      function doneToday() {
+        if (tickMemory) return tickMemory.day === today() ? tickMemory.done : [];
+        try { return Streak.ritualsToday(window.localStorage.getItem(Streak.RITUALS_KEY), today(), ritualIds); }
+        catch (e) { tickMemory = { day: today(), done: [] }; return []; }
+      }
+      function toggleTick(id) {
+        var next = Streak.toggleRitual(doneToday(), today(), id);
+        if (tickMemory) tickMemory = next;
+        else {
+          try { window.localStorage.setItem(Streak.RITUALS_KEY, JSON.stringify(next)); } catch (e) { tickMemory = next; }
+        }
+        renderTicks();
+      }
+      function renderTicks() {
+        var done = doneToday(), ritual = RITUALS.filter(function (r) { return r.id === selected; })[0];
+        var isDone = done.indexOf(selected) !== -1;
+        document.getElementById("ritualCount").textContent = done.length + " of " + RITUALS.length + " done today";
+        document.getElementById("ritualState").textContent = isDone ? "Done today. Press the key again to undo." : "Not done today. Press the key when it is.";
+        detailKey.set({ c: isDone ? "green" : "red", i: isDone ? "check" : ritual.i });
+        detailKey.el.setAttribute("aria-label", isDone ? ritual.name + " is done today. Press to undo." : "Mark " + ritual.name + " done today");
+        DECK.forEach(function (d, slot) {
+          var ticked = done.indexOf(d.id) !== -1;
+          ringKeys[slot].classList.toggle("ticked", ticked);
+          ringKeys[slot].setAttribute("aria-label", "Inspect " + d.n + (ticked ? " · done today" : ""));
+        });
+        renderCards();
+      }
+
+      function renderCards() {
+        var done = doneToday();
+        cardsHost.innerHTML = "";
+        RITUALS.forEach(function (ritual) {
+          var card = document.createElement("div"), isDone = done.indexOf(ritual.id) !== -1;
+          card.className = "rb" + (ritual.id === selected ? " selected" : "") + (isDone ? " done" : "");
+          card.hidden = filter !== "all" && ritual.cat !== filter;
+          card.dataset.id = ritual.id;
+          card.innerHTML =
+            '<button type="button" class="rb-open" aria-pressed="' + (ritual.id === selected) + '">' +
+            '<span class="rb-top"><span class="mono">Key ' + String(ritual.id).padStart(2, "0") + '</span><span class="mono">' + ritual.scope + "</span></span>" +
+            "<h3>" + ritual.name + "</h3><p>" + ritual.summary + "</p></button>" +
+            '<button type="button" class="rb-mark' + (isDone ? " done" : "") + '" data-mark="' + ritual.id + '" aria-pressed="' + isDone + '" aria-label="' +
+            (isDone ? ritual.name + " is done today. Press to undo." : "Mark " + ritual.name + " done today") + '">' +
+            '<span class="mi" aria-hidden="true">check</span><span>' + (isDone ? "Done today" : "Mark done") + "</span></button>";
+          cardsHost.appendChild(card);
+        });
+      }
+
+      function select(id) {
+        var ritual = RITUALS.filter(function (r) { return r.id === id; })[0];
+        if (!ritual) return;
+        selected = id;
+        detail.scope.textContent = ritual.scope;
+        detail.number.textContent = "Key " + String(ritual.id).padStart(2, "0");
+        detail.cat.textContent = ritual.catLabel;
+        detail.title.textContent = ritual.name;
+        detail.what.textContent = ritual.what;
+        detail.wont.textContent = ritual.wont;
+        detail.takes.textContent = ritual.takes;
+        renderTicks();
+      }
+
+      /* The cards are rebuilt on every change, so focus goes back to the same
+         ritual's button after it's pressed from the keyboard. */
+      cardsHost.addEventListener("click", function (e) {
+        var markBtn = e.target.closest(".rb-mark");
+        if (markBtn) {
+          var id = Number(markBtn.dataset.mark), focused = document.activeElement === markBtn;
+          toggleTick(id);
+          if (focused) cardsHost.querySelector('.rb-mark[data-mark="' + id + '"]').focus();
+          return;
+        }
+        var card = e.target.closest(".rb");
+        if (card) select(Number(card.dataset.id));
+      });
+
+      filters.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filter = btn.dataset.filter;
+          filters.forEach(function (b) { b.classList.toggle("active", b === btn); });
+          var visible = RITUALS.filter(function (r) { return filter === "all" || r.cat === filter; });
+          if (visible.length && !visible.some(function (r) { return r.id === selected; })) select(visible[0].id);
+          else renderCards();
+        });
+      });
+
+      mount("nextKeyBtn", make({
+        c: "white", l: "Next key", h: 44, i: "chevron_right",
+        onPress: function () {
+          var visible = RITUALS.filter(function (r) { return filter === "all" || r.cat === filter; });
+          if (!visible.length) return;
+          var i = -1;
+          visible.forEach(function (r, n) { if (r.id === selected) i = n; });
+          select(visible[(i + 1) % visible.length].id);
+        }
+      }));
+
+      function fallbackCopy(text, done) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch (e) { }
+        ta.remove(); done();
+      }
+      function copyText(text, message) {
+        var done = function () { showToast(message); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
+        else fallbackCopy(text, done);
+      }
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var ritual = RITUALS.filter(function (r) { return r.id === selected; })[0];
+        if (!ritual) return;
+        copyText(["HERE RITUAL", "", "Key: " + ritual.name, "Category: " + ritual.catLabel, "Scope: " + ritual.scope, "",
+          "Does: " + ritual.what, "", "Will not: " + ritual.wont, "", "Takes: " + ritual.takes].join("\n"), "Ritual copied.");
+      });
+
+      /* ── Links: only what CONFIG holds ─────────────────────── */
+      function externalLink(label, url) {
+        var a = document.createElement("a");
+        a.href = url;
+        a.textContent = label;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        return a;
+      }
+
+      var linksHost = document.getElementById("links");
+      [["Chart", CONFIG.CHART_URL], ["X", CONFIG.X_URL], ["Telegram", CONFIG.TG_URL], ["Repo", CONFIG.REPO_URL]].forEach(function (link) {
+        if (!link[1]) return;
+        var li = document.createElement("li");
+        li.appendChild(externalLink(link[0], link[1]));
+        linksHost.appendChild(li);
+      });
+      if (CONFIG.CA) {
+        var contract = document.createElement("li");
+        var address = document.createElement("span");
+        var copyCa = document.createElement("button");
+        contract.className = "contract";
+        address.textContent = CONFIG.CA;
+        copyCa.type = "button";
+        copyCa.className = "text-button";
+        copyCa.textContent = "Copy";
+        copyCa.addEventListener("click", function () { copyText(CONFIG.CA, "Contract copied."); });
+        contract.appendChild(address);
+        contract.appendChild(copyCa);
+        linksHost.appendChild(contract);
+      }
+      if (!linksHost.children.length) {
+        var noLinks = document.createElement("li");
+        noLinks.className = "links-empty";
+        noLinks.textContent = "Links appear here once they are official.";
+        linksHost.appendChild(noLinks);
+      }
+
+      var community = document.getElementById("footerCommunity");
+      [["X", CONFIG.X_URL], ["Telegram", CONFIG.TG_URL], ["Chart", CONFIG.CHART_URL], ["Repo", CONFIG.REPO_URL]].forEach(function (link) {
+        if (link[1]) community.appendChild(externalLink(link[0], link[1]));
+      });
+      community.hidden = community.querySelectorAll("a").length === 0;
+
+      /* ── Shared link: #day=N ───────────────────────────────── */
+      var dayBanner = document.getElementById("dayBanner");
+      function showDayBanner() {
+        var match = /^#day=([1-9]\d{0,4})$/.exec(window.location.hash);
+        dayBanner.hidden = !match;
+        if (match) dayBanner.textContent = "Someone says they're on day " + match[1] + " (self-reported)";
+      }
+      window.addEventListener("hashchange", showDayBanner);
+
+      /* ── Keep the page honest while it stays open ──────────── */
+      function refresh() {
+        if (running) return;
+        record = store.read();
+        renderStats();
+        renderGrade();
+        renderClaim();
+        renderTicks();
+        var s = Streak.summary(record, today());
+        statusEl.textContent = s.last === today() ? "already here today — day " + s.current : "idle — press the key";
+      }
+      window.addEventListener("storage", function (e) { if (e.key === Streak.KEY) refresh(); });
+      document.addEventListener("visibilitychange", function () { if (!document.hidden) refresh(); });
+
+      select(1);
+      refresh();
+      showDayBanner();
+      checkClaims();
+      if (store.blocked()) showToast(BLOCKED);
+    })();
+  </script>
+</body>
+
+</html>
